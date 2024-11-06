@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="/static/app.js" defer></script>
+    <title>Prayer Collection</title>
+</head>
+<body>
+    <h1>Prayer Collection</h1>
+    <div id="prayer-list">
+        {% for prayer in prayers %}
+        <div class="prayer-item" data-id="{{ prayer['id'] }}">
+            <p>{{ prayer['text'] }}</p>
+            <button onclick="incrementPrayer({{ prayer['id'] }})">Pray</button>
+            <p>Prayed: <span class="counter">{{ prayer['counter'] }}</span> times</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h2>Submit a Prayer Request</h2>
+        <textarea id="prayer-text"></textarea>
+        <button onclick="submitPrayerRequest()">Submit</button>
+    </div>
+</body>
+</html>
