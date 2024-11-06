@@ -1,4 +1,3 @@
 [build]
   publish = "src"
   command = "python src/app.py"
-"
